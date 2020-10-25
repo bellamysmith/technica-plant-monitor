@@ -17,8 +17,8 @@ const useStatusQuery = ({id}) => {
 `;
 
   const options = {
-    variables: { id },
-    pollInterval: 2000,
+    variables: { id }
+    // pollInterval: 30000, taking this out for now
   };
 
   const { data, error, loading } = useQuery(query, options);

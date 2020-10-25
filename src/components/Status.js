@@ -20,10 +20,10 @@ export const Status = ({ capStatus, temp, cap, tempStatus }) => {
             : "Your plant is happy!"}
         </Typography>
         <Typography variant="body2" align="center">
-          The surrounding temperature is {temp}º F. That is {tempStatus}.
+          The surrounding temperature is {temp}º F which is {tempStatus}.
         </Typography>
         <Typography key={cap} variant="body2" align="center">
-          It's got a capacitive moisture reading of {cap}.
+          It's got a capacitive moisture reading of {cap} which is {capStatus}.
         </Typography>
       </Grid>
     </Grid>
