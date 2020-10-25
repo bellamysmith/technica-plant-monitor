@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Grid, Typography } from "@material-ui/core";
 
-export const Status = ({ plantStatus, temp, cap }) => {
+export const Status = ({ capStatus, temp, cap, tempStatus }) => {
+
   return (
     <Grid
       className="plant-status"
@@ -14,15 +15,15 @@ export const Status = ({ plantStatus, temp, cap }) => {
     >
       <Grid item xs={12}>
         <Typography variant="h6" align="center" style={{ paddingBottom: 10 }}>
-          {plantStatus === "sad"
+          {capStatus === "LOW"
             ? "Your plant needs some water!"
             : "Your plant is happy!"}
         </Typography>
         <Typography variant="body2" align="center">
-          The surrounding temperature is {temp}º F.
+          The surrounding temperature is {temp}º F which is {tempStatus}.
         </Typography>
-        <Typography variant="body2" align="center">
-          It's got a capacitive moisture reading of {cap}.
+        <Typography key={cap} variant="body2" align="center">
+          It's got a capacitive moisture reading of {cap} which is {capStatus}.
         </Typography>
       </Grid>
     </Grid>
@@ -30,7 +31,8 @@ export const Status = ({ plantStatus, temp, cap }) => {
 };
 
 Status.propTypes = Status.propTypes = {
-  cap: PropTypes.number,
-  plantStatus: PropTypes.string,
-  temp: PropTypes.number,
+  cap: PropTypes.string,
+  capStatus: PropTypes.string,
+  temp: PropTypes.string,
+  tempStatus: PropTypes.string
 };
