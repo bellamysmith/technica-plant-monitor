@@ -19,7 +19,7 @@ export const PlantGraphic = ({ plantStatus }) => {
       <Grid item xs={12} style={{ minWidth: 200 }}>
         <Lottie
           animationData={
-            plantStatus === "sad" ? sadPlantAnimation : happyPlantAnimation
+            plantStatus === "LOW" ? sadPlantAnimation : happyPlantAnimation
           }
         />
       </Grid>
