@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Grid, Typography } from "@material-ui/core";
 
 export const Status = ({ capStatus, temp, cap, tempStatus }) => {
-  console.log("in status", capStatus);
+
   return (
     <Grid
       className="plant-status"

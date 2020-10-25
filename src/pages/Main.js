@@ -63,8 +63,6 @@ export const Main = () => {
 
   const { plantData } = usePlantData({ id: "Bellamy1" });
 
-  console.log("plantData:", plantData );
-
   const list = (anchor) => (
     <div
       className={classes.list}
