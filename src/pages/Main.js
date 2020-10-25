@@ -61,7 +61,7 @@ export const Main = () => {
     setState({ ...state, [anchor]: open });
   };
 
-  const { plantData } = usePlantData({ id: "Bellamy1" });
+  const { plantData } = usePlantData({ id: "Sylvia Pothos" });
 
   const list = (anchor) => (
     <div
