@@ -10,12 +10,9 @@ import { palette, spacing, typography } from "@material-ui/system";
 import { MobileNav } from "../layout";
 import { PlantGraphic, Status } from "../components";
 
-const PLANT_MOCK_DATA = {
-  plantName: "Sylvia Pothos",
-  plantSatus: "happy",
-  temp: 70,
-  cap: 430,
-};
+import usePlantData from "../hooks/usePlantData";
+
+
 
 const Box = styled.div`
   ${palette}${spacing}${typography}
@@ -64,6 +61,10 @@ export const Main = () => {
     setState({ ...state, [anchor]: open });
   };
 
+  const { plantData } = usePlantData({ id: "Bellamy1" });
+
+  console.log("plantData:", plantData );
+
   const list = (anchor) => (
     <div
       className={classes.list}
@@ -89,10 +90,10 @@ export const Main = () => {
 
   return (
     <>
-      <Container maxWidth="sm" className={classes.container}>
+      <Container maxWidth='sm' className={classes.container}>
         <div className={classes.fullWidth}>
-          <IconButton aria-label="info" onClick={toggleDrawer("top", true)}>
-            <InfoIcon fontSize="small" />
+          <IconButton aria-label='info' onClick={toggleDrawer("top", true)}>
+            <InfoIcon fontSize='small' />
           </IconButton>
         </div>
         <SwipeableDrawer
@@ -104,15 +105,21 @@ export const Main = () => {
         >
           {list("top")}
         </SwipeableDrawer>
-        <Typography variant="h4" align="center">
-          {PLANT_MOCK_DATA.plantName}
+        <Typography variant='h4' align='center'>
+          {plantData.loading ? "Loading..." : plantData.data.id}
         </Typography>
-        <PlantGraphic plantStatus={PLANT_MOCK_DATA.plantStatus} />
+        {plantData.loading ? null : (
+          <PlantGraphic plantStatus={plantData.data.capStatus} />
+        )}
+        {plantData.loading ? null :
         <Status
-          plantStatus={PLANT_MOCK_DATA.plantStatus}
-          temp={PLANT_MOCK_DATA.temp}
-          cap={PLANT_MOCK_DATA.cap}
+          tempStatus={plantData.data.tempStatus}
+          capStatus={plantData.data.capStatus}
+          temp={plantData.data.temp}
+          cap={plantData.data.cap}
         />
+        }
+
       </Container>
       <MobileNav />
     </>
